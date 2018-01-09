@@ -102,15 +102,16 @@ public class MyBatisTest {
 	public void test3() {
 		EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
 		//²âÊÔÌí¼Ó
-		//Employee employee=new Employee(null, "Jerry", "jerry@163.com", "0");
-		//mapper.addEmp(employee);
+		Employee employee=new Employee(null, "Jerry", "jerry@163.com", "0");
+		mapper.addEmp(employee);
+		System.out.println(employee.getId());
 	
 		//²âÊÔ¸üĞÂ
 		//Employee employee=new Employee(1, "Jerry", "jerry@163.com", "0");
 		//mapper.updateEmp(employee);
 		
 		 //É¾³ı
-		mapper.deleteEmp(2);
+		//mapper.deleteEmp(2);
 		System.out.println("has commited");
 	}
 }
