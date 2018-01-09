@@ -38,6 +38,12 @@
           order="BEFORE":当前sql在插入sql之前运行
           order="AFTER":当前sql在插入sql之后运行
           resultType="Integer":查出的数据返回值类型
+        BEFORE运行顺序：
+			先运行selectKey查询id的sql；查出id值封装给javaBean的id属性
+			在运行插入的sql；就可以取出id属性对应的值
+		AFTER运行顺序：
+			先运行插入的sql（从序列中取出新值作为id）；
+			再运行selectKey查询id的sql；
        -->
      <selectKey keyProperty="id" order="BEFORE" resultType="Integer">
          <!-- 编写查询主键的sql语句 -->
