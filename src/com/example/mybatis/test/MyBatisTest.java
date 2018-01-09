@@ -2,6 +2,8 @@ package com.example.mybatis.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -113,5 +115,14 @@ public class MyBatisTest {
 		 //É¾³ý
 		//mapper.deleteEmp(2);
 		System.out.println("has commited");
+	}
+	@Test
+	public void test4() {
+		EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+		Map<String, Object> map=new HashMap<>();
+		map.put("id", 1);
+		map.put("lastName", "Jerry");
+		Employee employee=mapper.getEmpByMap(map);
+		System.out.println(employee);
 	}
 }

@@ -20,6 +20,10 @@
  	<select id="getEmpByIdAndLastName" resultType="com.example.mybatis.bean.Employee">
  		select * from tbl_employee where id = #{id} and last_name=#{lastName}
  	</select>
+ 	
+ 	<select id="getEmpByMap" resultType="com.example.mybatis.bean.Employee">
+ 	    select * from tbl_employee where id =#{id} and last_name=#{lastName}
+ 	</select>
   <!--public void addEmp(Employee employee);  -->
   <!--parameterType可以省略的 
   获取自增主键的值：
