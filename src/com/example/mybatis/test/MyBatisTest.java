@@ -155,4 +155,11 @@ public class MyBatisTest {
 		Employee  employee=mapper.getEmpById(1);
 		System.out.println(employee);
 	}
+	@Test
+	public void test8() {
+		EmployeeMapperPlus mapper = session.getMapper(EmployeeMapperPlus.class);
+		Employee  employeeAndDept=mapper.getEmpAndDept(1);
+		System.out.println(employeeAndDept);
+		System.out.println(employeeAndDept.getDept());
+	}
 }
