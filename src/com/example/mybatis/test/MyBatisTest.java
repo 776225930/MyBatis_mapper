@@ -3,6 +3,7 @@ package com.example.mybatis.test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
@@ -58,11 +59,21 @@ public class MyBatisTest {
 	 * 
 	 * @throws IOException
 	 */
+	@Test 
+	public void testOracle() throws IOException{
+		String resource = "mybatis-config.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		// 获取SqlSession实例,能直接执行已经映射的sql语句
+		SqlSession session = sqlSessionFactory.openSession();
+		session.selectOne("getEmpById", 1);
+	}
 	@Test
 	public void test() throws IOException {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		
 		// 获取SqlSession实例,能直接执行已经映射的sql语句
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
@@ -72,14 +83,14 @@ public class MyBatisTest {
 			session.close();
 		}
 	}
-
+    
 	@Test
 	public void test1() throws IOException {
 		// 3、获取接口的实现类对象
 		// 会为接口自动的创建一个代理对象，代理对象去执行增删改查方法
 		EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
 
-		Employee employee = mapper.getEmpById(1);
+		Employee employee = mapper.getEmpById(7844);
 		System.out.println(mapper.getClass());
 		System.out.println(employee);
 	}
@@ -124,5 +135,17 @@ public class MyBatisTest {
 		map.put("lastName", "Jerry");
 		Employee employee=mapper.getEmpByMap(map);
 		System.out.println(employee);
+	}
+	@Test
+	public void test5() {
+		EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+		List<Employee> employees=mapper.getEmpsByLastNameLike("%j%");
+		System.out.println(employees);
+	}
+	@Test
+	public void test6() {
+		EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+		Map<String, Employee> employees=mapper.getEmpsByLastNameLikeReturnMap("%j%");
+		System.out.println(employees);
 	}
 }
