@@ -14,7 +14,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.example.mybatis.bean.Department;
 import com.example.mybatis.bean.Employee;
+import com.example.mybatis.dao.DepartmentMapper;
 import com.example.mybatis.dao.EmployeeMapper;
 import com.example.mybatis.dao.EmployeeMapperAnnotation;
 import com.example.mybatis.dao.EmployeeMapperPlus;
@@ -168,5 +170,12 @@ public class MyBatisTest {
 		Employee  employeeAndDept=mapper.getEmpByIdStep(1);
 		System.out.println(employeeAndDept);
 		System.out.println(employeeAndDept.getDept());
+	}
+	@Test
+	public void test9() {
+		DepartmentMapper mapper = session.getMapper(DepartmentMapper.class);
+		Department dept= mapper.getDeptByIdPlus(1);
+		System.out.println(dept);
+		System.out.println(dept.getEmps());
 	}
 }
