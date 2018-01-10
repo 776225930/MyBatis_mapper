@@ -96,6 +96,7 @@
    <!-- 将写好的sql映射文件一定要注册到全局配置文件 -->
     <mapper resource="mybatis/mapper/EmployeeMapper.xml"/>
     <mapper resource="mybatis/mapper/EmployeeMapperPlus.xml"/>
+    <mapper resource="mybatis/mapper/DepartmentMapper.xml"/>
     <mapper class="com.example.mybatis.dao.EmployeeMapperAnnotation"/>
     <!-- 批量注册：需要把映射文件和接口放在一个包下
 		<package name="com.atguigu.mybatis.dao"/> -->

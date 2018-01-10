@@ -162,4 +162,11 @@ public class MyBatisTest {
 		System.out.println(employeeAndDept);
 		System.out.println(employeeAndDept.getDept());
 	}
+	@Test
+	public void testStep() {
+		EmployeeMapperPlus mapper = session.getMapper(EmployeeMapperPlus.class);
+		Employee  employeeAndDept=mapper.getEmpByIdStep(1);
+		System.out.println(employeeAndDept);
+		System.out.println(employeeAndDept.getDept());
+	}
 }
