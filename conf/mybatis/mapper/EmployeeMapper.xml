@@ -12,6 +12,7 @@
   <select id="getEmpById" resultType="Employee" databaseId="oracle">
       select EMPNO id,ENAME lastName from EMP where EMPNO=#{id}
   </select>
+  
   <select id="selectEmp" resultType="Employee">
    <!-- 
     #{id}:从传递过来的参数中取id值 -->

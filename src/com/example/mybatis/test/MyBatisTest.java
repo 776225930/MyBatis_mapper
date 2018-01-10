@@ -17,6 +17,7 @@ import org.junit.Test;
 import com.example.mybatis.bean.Employee;
 import com.example.mybatis.dao.EmployeeMapper;
 import com.example.mybatis.dao.EmployeeMapperAnnotation;
+import com.example.mybatis.dao.EmployeeMapperPlus;
 
 /**
  * 1、接口式编程 原生： Dao ====> DaoImpl mybatis： Mapper ====> xxMapper.xml
@@ -80,7 +81,7 @@ public class MyBatisTest {
 			Employee emp = session.selectOne("selectEmp", 1);
 			System.out.println(emp);
 		} finally {
-			session.close();
+			//session.close();
 		}
 	}
     
@@ -147,5 +148,11 @@ public class MyBatisTest {
 		EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
 		Map<String, Employee> employees=mapper.getEmpsByLastNameLikeReturnMap("%j%");
 		System.out.println(employees);
+	}
+	@Test
+	public void test7() {
+		EmployeeMapperPlus mapper = session.getMapper(EmployeeMapperPlus.class);
+		Employee  employee=mapper.getEmpById(1);
+		System.out.println(employee);
 	}
 }
