@@ -167,7 +167,7 @@ public class MyBatisTest {
 	@Test
 	public void testStep() {
 		EmployeeMapperPlus mapper = session.getMapper(EmployeeMapperPlus.class);
-		Employee  employeeAndDept=mapper.getEmpByIdStep(1);
+		Employee  employeeAndDept=mapper.getEmpByIdStep(3);
 		System.out.println(employeeAndDept);
 		System.out.println(employeeAndDept.getDept());
 	}
@@ -175,6 +175,13 @@ public class MyBatisTest {
 	public void test9() {
 		DepartmentMapper mapper = session.getMapper(DepartmentMapper.class);
 		Department dept= mapper.getDeptByIdPlus(1);
+		System.out.println(dept);
+		System.out.println(dept.getEmps());
+	}
+	@Test
+	public void test10() {
+		DepartmentMapper mapper = session.getMapper(DepartmentMapper.class);
+		Department dept= mapper.getDeptByIdStep(1);
 		System.out.println(dept);
 		System.out.println(dept.getEmps());
 	}
